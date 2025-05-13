@@ -3,66 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi App de Aprendizaje</title>
+    <title>Bienvenido a [Tu App de Aprendizaje]</title>
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #f0f0f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        /* Basic Reset */
+        body, h1, h2, h3, p, ul, li, button, a {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
         }
 
-        .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #58cc02; /* Verde similar a Duolingo */
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
             color: #333;
-            margin-bottom: 10px;
+            background-color: #f9f9f9;
         }
 
-        .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
+        .landing-container {
+            width: 100%;
+            margin: 0 auto;
         }
 
-        .option {
-            background-color: #e9e9f2;
+        /* Header / Navbar */
+        header {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #58cc02; /* App's primary color */
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #555;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            color: #58cc02;
+        }
+
+        .cta-button-nav {
+            background-color: #58cc02;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
+            font-weight: bold;
             transition: background-color 0.3s ease;
         }
 
-        .option:hover {
-            background-color: #d0d0e0;
+        .cta-button-nav:hover {
+            background-color: #4aa001; /* Darker shade of green */
         }
 
-        .option img {
-            max-width: 50px;
+        /* Hero Section */
+        .hero {
+            background: #e6f7ff; /* Light blue, or an image */
+            color: #333;
+            padding: 80px 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hero .highlight {
+            color: #58cc02;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero .cta-button-main {
+            background-color: #58cc02;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero .cta-button-main:hover {
+            background-color: #4aa001;
+        }
+
+        /* Sections General Styling */
+        .section {
+            padding: 60px 2rem;
+            text-align: center;
+        }
+
+        .section-light {
+            background-color: #fff;
+        }
+        .section-dark {
+            background-color: #f0f0f5; /* Similar to inicio.html body */
+        }
+
+        .section h2.section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .feature-item .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #58cc0220; /* Light green background for icon */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px; /* Emoji/icon size */
+            color: #58cc02;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            color: #58cc02;
             margin-bottom: 10px;
         }
 
-        .option p {
+        .feature-item p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* How It Works Section */
+        .how-it-works-steps {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            flex-basis: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .step .step-number {
+            font-size: 2rem;
             font-weight: bold;
-            
+            color: #58cc02;
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Testimonials Section */
+        .testimonial {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+            text-align: left;
+        }
+        .testimonial blockquote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .testimonial .author {
+            font-weight: bold;
+            color: #58cc02;
+            text-align: right;
+        }
+
+        /* Call to Action (CTA) Section - Mid-page or before footer */
+        .cta-section {
+            background-color: #58cc02; /* Primary color background */
+            color: #fff;
+            padding: 60px 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2.section-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #f0f0f5;
+            text-align: center;
+            padding: 30px 2rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: #f0f0f5;
+        }
+        footer ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            header .logo {
+                margin-bottom: 10px;
+            }
+            header nav ul {
+                margin-top: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+            header nav ul li {
+                margin: 8px 0;
+            }
+            .cta-button-nav {
+                margin-top: 10px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section h2.section-title {
+                font-size: 2rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr; /* Stack features on smaller screens */
+            }
+            .how-it-works-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            .step {
+                flex-basis: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Header -->
+        <header>
+            <a href="#" class="logo">[Tu App]</a>
+            <nav>
+                <ul>
+                    <li><a href="#features" class="active">Características</a></li>
+                    <li><a href="#how-it-works">Cómo Funciona</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <!-- <li><a href="#pricing">Precios</a></li> -->
+                </ul>
+            </nav>
+            <a href="c:/Users/edurb/Documents/mayo/inicio.html" class="cta-button-nav">Acceder / Registrarse</a>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Aprende Algo Nuevo <span class="highlight">Cada Día</span></h1>
+            <p>Tu aventura de conocimiento comienza aquí. Únete a miles de estudiantes y explora cursos interactivos diseñados para ti.</p>
+            <a href="c:/Users/edurb/Documents/mayo/inicio.html" class="cta-button-main">¡Comienza Ahora Gratis!</a>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section section-light">
+            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">💡</div>
+                    <h3>Lecciones Interactivas</h3>
+                    <p>Sumérgete en contenido dinámico que te mantiene enganchado y facilita la retención.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3>Seguimiento de Progreso</h3>
+                    <p>Visualiza tu avance y mantente motivado con metas claras y logros desbloqueables.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Gamificación</h3>
+                    <p>Aprender es divertido. Gana puntos, insignias y compite amistosamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="section section-dark">
+            <h2 class="section-title">Comenzar es Fácil</h2>
+            <div class="how-it-works-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta en segundos y accede a un mundo de conocimiento.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Elige tu Curso</h3>
+                    <p>Explora nuestra biblioteca de cursos y encuentra lo que te apasiona.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Comienza a Aprender</h3>
+                    <p>Disfruta de lecciones interactivas y alcanza tus objetivos de aprendizaje.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section section-light">
+            <h2 class="section-title">Lo Que Dicen Nuestros Estudiantes</h2>
+            <div class="testimonial">
+                <blockquote>"¡Esta plataforma ha transformado mi manera de aprender! Las lecciones son claras y muy entretenidas."</blockquote>
+                <p class="author">- Alex G.</p>
+            </div>
+            <div class="testimonial">
+                <blockquote>"Gracias a [Tu App], finalmente estoy progresando en temas que antes me parecían imposibles."</blockquote>
+                <p class="author">- María P.</p>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <h2 class="section-title">¿Listo para Empezar tu Viaje de Aprendizaje?</h2>
+            <p>Únete a nuestra comunidad hoy mismo y desbloquea tu potencial.</p>
+            <a href="c:/Users/edurb/Documents/mayo/inicio.html" class="cta-button-main" style="background-color: #fff; color: #58cc02;">Regístrate Gratis</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 [Tu App de Aprendizaje]. Todos los derechos reservados.</p>
+            <ul>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servicio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
