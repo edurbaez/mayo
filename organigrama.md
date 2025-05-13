@@ -11,6 +11,7 @@
     *   Pie de página (enlaces a información adicional, redes sociales)
 
 *   **Cursos:**
+
     *   Página principal de cursos:
         *   Filtros por idioma, nivel, categoría (ej. negocios, viajes)
         *   Barra de búsqueda
@@ -44,3 +45,18 @@
 
 *   **Recursos:**
     *   Blog con artículos sobre
+
+    *   **estructura de los archivos**
+    *   **inicio.md**
+        * estructura del archivo inicio:
+        
+    *   **organigrama.md**
+    *   **estructura-general.md**
+    *   **cursos.md**
+    *   **lecciones.md**
+    *   **perfil-del-usuario.md**
+    *   **comunidad.md**
+    *   **recursos.md**
+    *   **testimonios.md**
+    *   **pie-de-pagina.md**
+    *   **index.md**
